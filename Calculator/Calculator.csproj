@@ -16,4 +16,9 @@
     <PackageReference Include="ReactiveUI.WPF" Version="18.4.34" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+
 </Project>
