@@ -1,5 +1,7 @@
-﻿using ReactiveUI;
+﻿using Calculator.ViewModels;
+using ReactiveUI;
 using System.Windows;
+using System;
 
 namespace Calculator
 {
@@ -11,6 +13,13 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
+
+            (titleBar.DataContext as TitleBarViewModel)
+                .WhenAnyValue(vm => vm.WindowState)
+                .Subscribe((state) =>
+                {
+                    this.WindowState = state;
+                });
         }
     }
 }
