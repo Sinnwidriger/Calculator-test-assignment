@@ -12,10 +12,18 @@
              x:TypeArguments="vms:CalculatorViewModel"
                           
              Padding="5">
+    <UserControl.DataContext>
+        <vms:CalculatorViewModel />
+    </UserControl.DataContext>
+
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top">
-            <TextBlock Text="" Foreground="White" FontSize="30" Padding="10" TextAlignment="Right" />
-            <TextBlock Text="0" Foreground="White" FontSize="40" Padding="10" TextAlignment="Right" />
+        <StackPanel DockPanel.Dock="Top" Height="150">
+            <Viewbox StretchDirection="DownOnly" Stretch="Uniform" HorizontalAlignment="Right">
+                <TextBlock Text="{Binding TopString}" Foreground="#a6a6a6" FontSize="25" Padding="10" />
+            </Viewbox>
+            <Viewbox StretchDirection="DownOnly" Stretch="Uniform" HorizontalAlignment="Right">
+                <TextBlock Text="{Binding BottomString}" Foreground="White" FontSize="40" Padding="10" FontWeight="DemiBold" />
+            </Viewbox>
         </StackPanel>
         <Grid>
             <Grid.RowDefinitions>
@@ -32,29 +40,29 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" Content="CE" Style="{StaticResource CalculatorButton1}" />
-            <Button Grid.Row="0" Grid.Column="1" Content="C" Style="{StaticResource CalculatorButton1}" />
-            <Button Grid.Row="0" Grid.Column="2" Content="⌫" Style="{StaticResource CalculatorButton1}" />
+            <Button Grid.Row="0" Grid.Column="0" Content="CE" Command="{Binding ClearBottomStringCommand}" Style="{StaticResource CalculatorButton1}" />
+            <Button Grid.Row="0" Grid.Column="1" Content="C" Command="{Binding ClearAllCommand}" Style="{StaticResource CalculatorButton1}" />
+            <Button Grid.Row="0" Grid.Column="2" Content="⌫" Command="{Binding RemoveCharCommand}" Style="{StaticResource CalculatorButton1}" />
+
+            <Button Grid.Row="0" Grid.Column="3" Content="÷" CommandParameter="÷" Command="{Binding OperationCommand}" Style="{StaticResource CalculatorButton1}" />
+            <Button Grid.Row="1" Grid.Column="3" Content="✕" CommandParameter="✕" Command="{Binding OperationCommand}" Style="{StaticResource CalculatorButton1}" />
+            <Button Grid.Row="2" Grid.Column="3" Content="—" CommandParameter="-" Command="{Binding OperationCommand}" Style="{StaticResource CalculatorButton1}" />
+            <Button Grid.Row="3" Grid.Column="3" Content="+" CommandParameter="+" Command="{Binding OperationCommand}" Style="{StaticResource CalculatorButton1}" />
             
-            <Button Grid.Row="0" Grid.Column="3" Content="÷" Style="{StaticResource CalculatorButton1}" />
-            <Button Grid.Row="1" Grid.Column="3" Content="✕" Style="{StaticResource CalculatorButton1}" />
-            <Button Grid.Row="2" Grid.Column="3" Content="—" Style="{StaticResource CalculatorButton1}" />
-            <Button Grid.Row="3" Grid.Column="3" Content="+" Style="{StaticResource CalculatorButton1}" />
-            
-            <Button Grid.Row="1" Grid.Column="0" Content="7" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="1" Grid.Column="1" Content="8" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="1" Grid.Column="2" Content="9" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="2" Grid.Column="0" Content="4" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="2" Grid.Column="1" Content="5" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="2" Grid.Column="2" Content="6" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="3" Grid.Column="0" Content="1" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="3" Grid.Column="1" Content="2" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="3" Grid.Column="2" Content="3" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="4" Grid.Column="0" Content="⁺∕₋" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="4" Grid.Column="1" Content="0" Style="{StaticResource CalculatorButton2}" />
-            <Button Grid.Row="4" Grid.Column="2" Content="," Style="{StaticResource CalculatorButton2}" />
-            
-            <Button Grid.Row="4" Grid.Column="3" Content="=" Style="{StaticResource CalculatorButton3}" />
+            <Button Grid.Row="1" Grid.Column="0" Content="7" CommandParameter="7" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="1" Grid.Column="1" Content="8" CommandParameter="8" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="1" Grid.Column="2" Content="9" CommandParameter="9" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="2" Grid.Column="0" Content="4" CommandParameter="4" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="2" Grid.Column="1" Content="5" CommandParameter="5" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="2" Grid.Column="2" Content="6" CommandParameter="6" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="3" Grid.Column="0" Content="1" CommandParameter="1" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="3" Grid.Column="1" Content="2" CommandParameter="2" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="3" Grid.Column="2" Content="3" CommandParameter="3" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="4" Grid.Column="0" Content="⁺∕₋" Command="{Binding ChangeSignCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="4" Grid.Column="1" Content="0" CommandParameter="0" Command="{Binding AppendNumberCommand}" Style="{StaticResource CalculatorButton2}" />
+            <Button Grid.Row="4" Grid.Column="2" Content="," Command="{Binding AddFloatingPointCommand}" Style="{StaticResource CalculatorButton2}" />
+
+            <Button Grid.Row="4" Grid.Column="3" Content="=" Command="{Binding ResultCommand}" Style="{StaticResource CalculatorButton3}" />
         </Grid>
     </DockPanel>
 </rxui:ReactiveUserControl>

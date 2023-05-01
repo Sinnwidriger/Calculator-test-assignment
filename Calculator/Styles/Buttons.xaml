@@ -39,7 +39,7 @@
     <Style TargetType="Button" x:Key="CalculatorButtonBase">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Margin" Value="3" />
+        <Setter Property="Margin" Value="1" />
         <Setter Property="FontSize" Value="20" />
 
         <Setter Property="Template">
@@ -52,7 +52,7 @@
             </Setter.Value>    
         </Setter>
 
-        <Setter Property="Border.CornerRadius" Value="10" />
+        <Setter Property="Border.CornerRadius" Value="5" />
     </Style>
 
     <Style TargetType="Button" x:Key="CalculatorButton1" BasedOn="{StaticResource CalculatorButtonBase}">
@@ -77,7 +77,7 @@
 
     <Style TargetType="Button" x:Key="CalculatorButton3" BasedOn="{StaticResource CalculatorButtonBase}">
         <Setter Property="Background" Value="#f38064" />
-        
+        <Setter Property="Foreground" Value="Black" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#dd765d" />
