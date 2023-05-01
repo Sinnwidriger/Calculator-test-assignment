@@ -35,5 +35,53 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style TargetType="Button" x:Key="CalculatorButtonBase">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="FontSize" Value="20" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="{TemplateBinding Border.CornerRadius}" Background="{TemplateBinding Background}">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>    
+        </Setter>
+
+        <Setter Property="Border.CornerRadius" Value="10" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="CalculatorButton1" BasedOn="{StaticResource CalculatorButtonBase}">
+        <Setter Property="Background" Value="#323232" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#3c3c3c" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="CalculatorButton2" BasedOn="{StaticResource CalculatorButtonBase}">
+        <Setter Property="Background" Value="#3b3b3b" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#313235" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="CalculatorButton3" BasedOn="{StaticResource CalculatorButtonBase}">
+        <Setter Property="Background" Value="#f38064" />
+        
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#dd765d" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

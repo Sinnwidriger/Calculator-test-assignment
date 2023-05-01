@@ -14,17 +14,17 @@
         Foreground="White"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Title="Calculator" Height="500" Width="325">
+        MinHeight="500" MinWidth="325"
+        Height="500" Width="325"
+        Title="Calculator">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30" />
     </WindowChrome.WindowChrome>
     
     <DockPanel Background="#202020">
-        <views:TitleBar x:Name="titleBar" DockPanel.Dock="Top" />
-        <Grid>
-            
-        </Grid>
+        <views:TitleBarView x:Name="titleBar" DockPanel.Dock="Top" />
+        <views:CalculatorView />
     </DockPanel>
 
 </rxui:ReactiveWindow>
